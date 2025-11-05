@@ -17,6 +17,7 @@ public:
 
   bool vivo;
   bool alertado; // estado pasivo o activo
+  int target_hero_id; 
 
   Monster(const MonsterConfig &config);
 

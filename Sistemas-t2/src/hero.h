@@ -2,6 +2,7 @@
 
 #include "config.h"
 #include <vector>
+#include <iostream>
 
 // forward declaration para evitar inclusion circular
 class Simulacion;
@@ -15,9 +16,11 @@ public:
   int attack_range;
   Coords pos; // posicion actual
   std::vector<Coords> path;
-  int path_index; // para saber en que parte del camino va
+  size_t path_index; 
 
   bool vivo;
+  bool en_combate; 
+  bool escapado;   
 
   // constructor
   Hero(const HeroConfig &config);
