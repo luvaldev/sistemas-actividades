@@ -1,8 +1,31 @@
-# Tarea 2 - (Héroe, Monstruo)
+# Tarea 2 — Héroe y Monstruos 
 
-Este proyecto es una simulacion concurrente basada en el juego Doom, utilizando C++ y threads. La simulacion involucra un heroe y varios monstruos que interactuan en un grid 2D, siguiendo reglas especificas de movimiento, vision y combate.
+**Universidad Diego Portales**   
+**Curso:** Sistemas Operativos 
+**Profesor:** Víctor Reyes 
 
-> Estructura del Proyecto
+
+## Integrantes
+- **Nombre:** Luis Valdenegro — **Correo:** luis.valdenegro@mail.udp.cl
+
+
+## Descripción del programa
+
+El proyecto implementa una **simulación concurrente** basada en *Doom (1993)*, utilizando **C++11** y **threads**.
+
+En un **grid 2D**, un **héroe** se mueve siguiendo una ruta predefinida, mientras varios **monstruos** permanecen pasivos hasta detectar o ser alertados por el héroe.  
+Cada entidad (héroe o monstruo) se ejecuta en un **hilo independiente**, compartiendo un estado global protegido por **mutex** para evitar condiciones de carrera.
+
+**Características principales:**
+- Un hilo para el héroe y M hilos para los monstruos.  
+- Lectura dinámica de parámetros desde archivo `.txt`.  
+- Monstruos con rango de visión y ataque; héroe con ruta, daño y vida.  
+- Sincronización segura mediante `std::mutex`.  
+- Extensión (Parte 2): soporte para múltiples héroes concurrentes con rutas independientes.
+
+---
+
+## Estructura del proyecto
 
 ```
 |-- src/
@@ -24,10 +47,53 @@ Este proyecto es una simulacion concurrente basada en el juego Doom, utilizando 
 |-- ejemplo3.txt         # (archivo de prueba)
 ```
 
+---
 
-## Compilacion
-Para compilar el proyecto, necesitas g++ y make.
+## Compilación 
+
+En un entorno **WLS/Linux** con `make` y `g++` instalados:
 
 ```bash
 make
 ```
+
+Esto generará el ejecutable.
+
+---
+
+## Ejecución
+
+Ejecuta la simulación indicando el archivo de configuración:
+
+```bash
+make run
+```
+
+Tambien se puede utilizar 
+
+```bash
+./doom_sim ejemplo1.txt
+```
+
+
+---
+
+## Funcionamiento resumido
+
+1. Se lee la configuración y se crea el grid.  
+2. Se generan los threads del héroe y los monstruos.  
+3. El héroe se mueve siguiendo su ruta.  
+4. Los monstruos detectan o son alertados, y atacan.  
+5. La simulación termina cuando el héroe muere o llega a su meta.
+
+---
+
+## Requisitos del entorno
+
+- Sistema operativo **WLS/Linux**  
+- **g++ 11+**  
+- Compatible con **POSIX threads (std::thread)**  
+
+---
+
+Universidad Diego Portales, Escuela de Informática y Telecomunicaciones
